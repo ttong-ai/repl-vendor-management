@@ -74,8 +74,13 @@ def webhook():
   elif tag == "get_vendor_record":
     vendor_record = get_vendor_record(vendor_name=vendor_name, vendor_email=vendor_email)
     if vendor_record:
+      vendor_found = True
+    else:
+      vendor_found = False
+    if vendor_record:
       params.update(
         {
+          "vendor_found": vendor_found,
           "vendor_record": vendor_record
         }
       )
@@ -130,3 +135,4 @@ def webhook():
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080)
+Quick 
